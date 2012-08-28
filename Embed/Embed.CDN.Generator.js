@@ -215,8 +215,9 @@ function updateEmbedCode(element, options) {
 		el			= getLinkAndIframe();
 	
 	e_embed.value	= el.copybox;
-	$("#preview-embed-link").attr('href', el.link);
-	$("#preview-embed-iframe").html(el.iframe);
+	jQuery("#preview-embed-link").attr('href', el.link);
+	jQuery("#preview-embed-iframe").html(el.iframe);
+	jQuery("#preview-embed").css("display","block");
 	
 }
 
