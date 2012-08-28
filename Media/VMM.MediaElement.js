@@ -9,7 +9,7 @@ if(typeof VMM != 'undefined' && typeof VMM.MediaElement == 'undefined') {
 		},
 		
 		loadingmessage: function(m) {
-			return "<div class='loading'><div class='loading-container'><div class='loading-icon'></div>" + "<div class='message'><p>" + m + "</p></div></div></div>";
+			return "<div class='vco-loading'><div class='vco-loading-container'><div class='vco-loading-icon'></div>" + "<div class='vco-message'><p>" + m + "</p></div></div></div>";
 		},
 		
 		thumbnail: function(data, w, h, uid) {
