@@ -522,6 +522,12 @@ if(typeof VMM != 'undefined' && typeof VMM.ExternalAPI == 'undefined') {
 						address		= VMM.Util.getUrlVars(m.url)["q"],
 						marker;
 						
+					if (address.match("loc:")) {
+						var address_latlon = address.split(":")[1].split("+");
+						location = new google.maps.LatLng(parseFloat(address_latlon[0]),parseFloat(address_latlon[1]));
+						has_location = true;
+					}
+						
 					geocoder.geocode( { 'address': address}, function(results, status) {
 						if (status == google.maps.GeocoderStatus.OK) {
 							
@@ -551,6 +557,14 @@ if(typeof VMM != 'undefined' && typeof VMM.ExternalAPI == 'undefined') {
 						} else {
 							trace("Geocode for " + address + " was not successful for the following reason: " + status);
 							trace("TRYING PLACES SEARCH");
+							
+							if (has_location) {
+								map.panTo(location);
+							}
+							if (has_zoom) {
+								map.setZoom(zoom);
+							}
+							
 							loadPlaces();
 						}
 					});
@@ -611,16 +625,25 @@ if(typeof VMM != 'undefined' && typeof VMM.ExternalAPI == 'undefined') {
 							
 							
 						} else {
-							trace("Place search for " + address + " was not successful for the following reason: " + status);
+							trace("Place search for " + search_request.query + " was not successful for the following reason: " + status);
 							// IF There's a problem loading the map, load a simple iFrame version instead
 							trace("YOU MAY NEED A GOOGLE MAPS API KEY IN ORDER TO USE THIS FEATURE OF TIMELINEJS");
 							trace("FIND OUT HOW TO GET YOUR KEY HERE: https://developers.google.com/places/documentation/#Authentication");
-							trace("USING SIMPLE IFRAME MAP EMBED");
 							
-							if (m.url.match("https")) {
-								m.url = m.url.replace("https", "http");
+							
+							if (has_location) {
+								map.panTo(location);
+								if (has_zoom) {
+									map.setZoom(zoom);
+								}
+							} else {
+								trace("USING SIMPLE IFRAME MAP EMBED");
+								if (m.url[0].match("https")) { 
+									m.url = m.url[0].replace("https", "http");
+								}
+								VMM.ExternalAPI.googlemaps.createiFrameMap(m);
 							}
-							VMM.ExternalAPI.googlemaps.createiFrameMap(m);
+							
 						}
 						
 					}
