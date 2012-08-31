@@ -187,11 +187,11 @@ function getLinkAndIframe() {
 	
 	iframe		= "<iframe src='" + vars + "'";
 	
-	if (e_width.value > 0) {
-		iframe	+= " width='" + e_width.value + "'"; 
+	if (e_width.value > 0 || e_width.value.match("%")) {
+		iframe	+= " width='" + e_width.value + "'";
 	}
-	if (e_height.value > 0) {
-		iframe	+= " height='" + e_height.value + "'"; 
+	if (e_height.value > 0 || e_height.value.match("%")) {
+		iframe	+= " height='" + e_height.value + "'";
 	}
 	iframe		+= " frameborder='0'></iframe>";
 	

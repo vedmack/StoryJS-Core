@@ -62,7 +62,8 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 					content: {
 						width:		720, 
 						height:		400, 
-						padding:	130
+						padding:	120,
+						padding_default: 120
 					}, 
 					nav: {
 						width:		100, 
@@ -174,6 +175,13 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 			current_width = config.slider.width;
 			
 			config.slider.nav.height = VMM.Lib.height(navigation.prevBtnContainer);
+			
+			// Handle smaller sizes
+			if (VMM.Browser.device == "mobile" || current_width <= 640) {
+				config.slider.content.padding	= 10;
+			} else {
+				config.slider.content.padding	= config.slider.content.padding_default;
+			}
 			
 			config.slider.content.width = current_width - (config.slider.content.padding *2);
 			
@@ -352,6 +360,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 				layout_media			= ".slider-item .layout-media .media .media-container ",
 				layout_both				= ".slider-item .media .media-container",
 				layout_caption			= ".slider-item .media .media-container .media-shadow .caption",
+				is_skinny				= false,
 				mediasize = {
 					text_media: {
 						width: 			(config.slider.content.width/100) * 60,
@@ -374,6 +383,12 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 						}
 					}
 				};
+				
+			// Handle smaller sizes
+			if (VMM.Browser.device == "mobile" || current_width <= 640) {
+				is_skinny = true;
+
+			} 
 			
 			VMM.master_config.sizes.api.width	= mediasize.media.width;
 			VMM.master_config.sizes.api.height	= mediasize.media.height;
@@ -384,20 +399,12 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 			VMM.Lib.css(".slider-item", "width", config.slider.content.width );
 			VMM.Lib.height(".slider-item", config.slider.height);
 			
-			// HANDLE SMALLER SIZES
-			var is_skinny = false;
 			
-			if (current_width <= 640) {
-				is_skinny = true;
-			} else if (VMM.Browser.device == "mobile" && VMM.Browser.orientation == "portrait") {
-				is_skinny = true;
-			} else if (VMM.Browser.device == "tablet" && VMM.Browser.orientation == "portrait") {
-				//is_skinny = true;
-			}
 			
 			if (is_skinny) {
 				
-				mediasize.text_media.width = 	config.slider.content.width;
+				mediasize.text_media.width = 	config.slider.content.width - (config.slider.content.padding*2);
+				mediasize.media.width = 		config.slider.content.width - (config.slider.content.padding*2);
 				mediasize.text_media.height = 	((config.slider.height/100) * 50 ) - 50;
 				mediasize.media.height = 		((config.slider.height/100) * 70 ) - 40;
 				
@@ -407,7 +414,8 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 				VMM.Lib.css(".slider-item .layout-text-media .text", "width", "100%" );
 				VMM.Lib.css(".slider-item .layout-text-media .text", "display", "block" );
 				VMM.Lib.css(".slider-item .layout-text-media .text .container", "display", "block" );
-				VMM.Lib.css(".slider-item .layout-text-media .text .container", "width", config.slider.content.width );
+				VMM.Lib.css(".slider-item .layout-text-media .text .container", "width", mediasize.media.width );
+				VMM.Lib.css(".slider-item .layout-text-media .text .container .start", "width", "auto" );
 				
 				VMM.Lib.css(".slider-item .layout-text-media .media", "float", "none" );
 				VMM.Lib.addClass(".slider-item .content-container", "pad-top");
@@ -479,13 +487,17 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 			VMM.Lib.css(	layout_both + 		".soundcloud", 			"max-height", 	168 );
 			
 			// MAPS
-			VMM.Lib.height(	layout_text_media + ".map", 								mediasize.text_media.height);
-			VMM.Lib.css(	layout_media + 		".map", 				"max-height", 	mediasize.media.height);
-			VMM.Lib.width(	layout_media + 		".map", 								mediasize.media.width);
-
+			VMM.Lib.height(	layout_text_media	+ ".map", 								mediasize.text_media.height);
+			VMM.Lib.width(	layout_text_media	+ ".map", 								mediasize.text_media.width);
+			VMM.Lib.css(	layout_media		+ ".map", 				"max-height", 	mediasize.media.height);
+			VMM.Lib.width(	layout_media		+ ".map", 								mediasize.media.width);
+			
+			
 			// DOCS
 			VMM.Lib.height(	layout_text_media + ".doc", 								mediasize.text_media.height);
+			VMM.Lib.width(	layout_text_media	+ ".doc", 								mediasize.text_media.width);
 			VMM.Lib.height(	layout_media + 		".doc", 								mediasize.media.height);
+			VMM.Lib.width(	layout_media		+ ".doc", 								mediasize.media.width);
 			
 			// IE8 NEEDS THIS
 			VMM.Lib.width(	layout_media + 		".wikipedia", 							mediasize.media.width);
@@ -496,6 +508,8 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 			// CAPTION WIDTH
 			VMM.Lib.css( layout_text_media + 	".caption",	"max-width",	mediasize.text_media.video.width);
 			VMM.Lib.css( layout_media + 		".caption",	"max-width",	mediasize.media.video.width);
+			//VMM.Lib.css( layout_text_media + 	".caption",	"max-width",	mediasize.text_media.width);
+			//VMM.Lib.css( layout_media + 		".caption",	"max-width",	mediasize.media.width);
 			
 			// MAINTAINS VERTICAL CENTER IF IT CAN
 			for(i = 0; i < slides.length; i++) {
@@ -565,44 +579,53 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 			if (ease != null && ease != "") {_ease = ease};
 			if (duration != null && duration != "") {_duration = duration};
 			
-			/* set proper nav titles and dates etc.
+			/*	NAVIGATION
+				set proper nav titles and dates etc.
 			================================================== */
-			if (is_first) {
+			// Handle smaller sizes
+			if (VMM.Browser.device == "mobile") {
+			//if (VMM.Browser.device == "mobile" || current_width <= 640) {
 				VMM.Lib.visible(navigation.prevBtn, false);
-			} else {
-				VMM.Lib.visible(navigation.prevBtn, true);
-				_title = VMM.Util.unlinkify(data[current_slide - 1].title)
-				if (config.type == "timeline") {
-					if(typeof data[current_slide - 1].date === "undefined") {
-						VMM.attachElement(navigation.prevDate, _title);
-						VMM.attachElement(navigation.prevTitle, "");
-					} else {
-						VMM.attachElement(navigation.prevDate, VMM.Date.prettyDate(data[current_slide - 1].startdate));
-						VMM.attachElement(navigation.prevTitle, _title);
-					}
-				} else {
-					VMM.attachElement(navigation.prevTitle, _title);
-				}
-				
-			}
-			if (is_last) {
 				VMM.Lib.visible(navigation.nextBtn, false);
 			} else {
-				VMM.Lib.visible(navigation.nextBtn, true);
-				_title = VMM.Util.unlinkify(data[current_slide + 1].title);
-				if (config.type == "timeline") {
-					if(typeof data[current_slide + 1].date === "undefined") {
-						VMM.attachElement(navigation.nextDate, _title);
-						VMM.attachElement(navigation.nextTitle, "");
-					} else {
-						VMM.attachElement(navigation.nextDate, VMM.Date.prettyDate(data[current_slide + 1].startdate) );
-						VMM.attachElement(navigation.nextTitle, _title);
-					}
+				if (is_first) {
+					VMM.Lib.visible(navigation.prevBtn, false);
 				} else {
-					VMM.attachElement(navigation.nextTitle,  _title);
-				}
+					VMM.Lib.visible(navigation.prevBtn, true);
+					_title = VMM.Util.unlinkify(data[current_slide - 1].title)
+					if (config.type == "timeline") {
+						if(typeof data[current_slide - 1].date === "undefined") {
+							VMM.attachElement(navigation.prevDate, _title);
+							VMM.attachElement(navigation.prevTitle, "");
+						} else {
+							VMM.attachElement(navigation.prevDate, VMM.Date.prettyDate(data[current_slide - 1].startdate));
+							VMM.attachElement(navigation.prevTitle, _title);
+						}
+					} else {
+						VMM.attachElement(navigation.prevTitle, _title);
+					}
 				
+				}
+				if (is_last) {
+					VMM.Lib.visible(navigation.nextBtn, false);
+				} else {
+					VMM.Lib.visible(navigation.nextBtn, true);
+					_title = VMM.Util.unlinkify(data[current_slide + 1].title);
+					if (config.type == "timeline") {
+						if(typeof data[current_slide + 1].date === "undefined") {
+							VMM.attachElement(navigation.nextDate, _title);
+							VMM.attachElement(navigation.nextTitle, "");
+						} else {
+							VMM.attachElement(navigation.nextDate, VMM.Date.prettyDate(data[current_slide + 1].startdate) );
+							VMM.attachElement(navigation.nextTitle, _title);
+						}
+					} else {
+						VMM.attachElement(navigation.nextTitle,  _title);
+					}
+				
+				}
 			}
+			
 			
 			/* ANIMATE SLIDE
 			================================================== */
