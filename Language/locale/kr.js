@@ -15,13 +15,13 @@ if(typeof VMM != 'undefined') {
 		dateformats: {
 			year: "yyyy",
 			month_short: "mmm",
-			month: "yyyy mmmm",
+			month: "yyyy mmm",
 			full_short: "mmm d",
-			full: "yyyy mmmm d ",
+			full: "yyyy mmm d ",
 			time_no_seconds_short: "HH:MM",
-			time_no_seconds_small_date: "HH:MM'<br/><small>'yyyy mmmm d '</small>'",
+			time_no_seconds_small_date: "HH:MM'<br/><small>'yyyy mmm d '</small>'",
 			full_long: "dddd',' d mmm yyyy 'um' HH:MM",
-			full_long_small_date: "HH:MM'<br/><small>'dddd','yyyy mmmm d'</small>'"
+			full_long_small_date: "HH:MM'<br/><small>'dddd','yyyy mmm d'</small>'"
 		},
 		messages: {
 			loading_timeline: "타임라인을 불러오고 있습니다.... ",
