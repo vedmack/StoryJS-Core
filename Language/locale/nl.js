@@ -8,7 +8,7 @@ if(typeof VMM != 'undefined') {
 		},
 		date: {
 			month: ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"],
-			month_abbr: ["jan", "febr", "ma", "apr", "mei", "juni", "juli", "aug", "sept", "okt", "nov", "dec"],
+			month_abbr: ["jan", "febr", "maa", "apr", "mei", "juni", "juli", "aug", "sept", "okt", "nov", "dec"],
 			day: ["zondag","maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"],
 			day_abbr: ["zo","ma", "di", "wo", "do", "vr", "za"]
 		}, 
@@ -20,7 +20,7 @@ if(typeof VMM != 'undefined') {
 			full: "d mmmm yyyy",
 			time_no_seconds_short: "HH:MM",
 			time_no_seconds_small_date: "HH:MM'<br/><small>'d mmmm yyyy'</small>'",
-			full_long: "dddd',' d mmm yyyy 'um' HH:MM",
+			full_long: "dddd',' d mmm yyyy 'om' HH:MM",
 			full_long_small_date: "HH:MM'<br/><small>'dddd',' d mmm yyyy'</small>'"
 		},
 		messages: {
@@ -29,8 +29,8 @@ if(typeof VMM != 'undefined') {
 			expand_timeline: "Tijdlijn uitzoomen",
 			contract_timeline: "Tijdlijn inzoomen",
 			wikipedia: "From Wikipedia, the free encyclopedia",
-			loading_content: "Loading Content",
-			loading: "Loading"
+			loading_content: "Inhoud laden",
+			loading: "Laden"
 			
 		}
 	}
