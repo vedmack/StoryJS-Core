@@ -7,10 +7,10 @@ if(typeof VMM != 'undefined') {
 			wikipedia: "tr"
 		},
 		date: {
-			month: ["Ocak", "Þubat", "Mart", "Nisan", "Mayýs", "Haziran", "Temmuz", "Aðustos", "Eylül", "Ekim", "Kasým", "Aralýk"],
-			month_abbr: ["Oca.", "Þub.", "Mar.", "Nis.", "May.", "Haz.", "Tem.", "Aðu.", "Eyl.", "Eki.", "Kas.", "Ara."],
-			day: ["Pazar","Pazartesi", "Salý", "Çarþamba", "Perþembe", "Cuma", "Cumartesi"],
-			day_abbr: ["Paz.","Pzt.", "Sal.", "Çar.", "Per.", "Cum.", "Cts."]
+			month: ["Ocak", "Åžubat", "Mart", "Nisan", "MayÄ±s", "Haziran", "Temmuz", "AÄŸustos", "EylÃ¼l", "Ekim", "KasÄ±m", "AralÄ±k"],
+			month_abbr: ["Oca.", "Åžub.", "Mar.", "Nis.", "May.", "Haz.", "Tem.", "AÄŸu.", "Eyl.", "Eki.", "Kas.", "Ara."],
+			day: ["Pazar","Pazartesi", "SalÄ±", "Ã‡arÅŸamba", "PerÅŸembe", "Cuma", "Cumartesi"],
+			day_abbr: ["Paz.","Pzt.", "Sal.", "Ã‡ar.", "Per.", "Cum.", "Cts."]
 		}, 
 		dateformats: {
 			year: "yyyy",
@@ -24,13 +24,13 @@ if(typeof VMM != 'undefined') {
 			full_long_small_date: "H:MM '<br/><small>d mmm',' yyyy'</small>'"
 		},
 		messages: {
-			loading_timeline: "Zaman Çizelgesi Yükleniyor... ",
-			return_to_title: "Baþlýða Dön",
-			expand_timeline: "Zaman Çizelgesini Geniþlet",
-			contract_timeline: "Zaman Çizelgesini Daralt",
-			wikipedia: "Wikipedia'dan, özgür ansiklopedi",
-			loading_content: "Ýçerik Yükleniyor",
-			loading: "Yükleniyor"
+			loading_timeline: "Zaman Ã‡izelgesi YÃ¼kleniyor... ",
+			return_to_title: "BaÅŸlÄ±ÄŸa DÃ¶n",
+			expand_timeline: "Zaman Ã‡izelgesini GeniÅŸlet",
+			contract_timeline: "Zaman Ã‡izelgesini Daralt",
+			wikipedia: "Wikipedia'dan, Ã¶zgÃ¼r ansiklopedi",
+			loading_content: "Ä°Ã§erik YÃ¼kleniyor",
+			loading: "YÃ¼kleniyor"
 		}
 	}
 }
