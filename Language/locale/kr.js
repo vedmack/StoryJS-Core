@@ -19,7 +19,7 @@ if(typeof VMM != 'undefined') {
 			full_short: "mmm d",
 			full: "yyyy mmm d ",
 			time_no_seconds_short: "HH:MM",
-			time_no_seconds_small_date: "HH:MM'<br/><small>'yyyy mmm d '</small>'",
+			time_no_seconds_small_date: "HH:MM'<br/><small>'yyyy mmm d'</small>'",
 			full_long: "dddd',' d mmm yyyy 'um' HH:MM",
 			full_long_small_date: "HH:MM'<br/><small>'dddd','yyyy mmm d'</small>'"
 		},
@@ -30,7 +30,7 @@ if(typeof VMM != 'undefined') {
 			contract_timeline: "타임라인 축소",
 			wikipedia: "출처: 위키피디아, 우리 모두의 백과사전",
 			loading_content: "내용을 불러오고 있습니다.",
-			loading: "내용을 불러오는중"
+			loading: "불러오는중"
 			
 		}
 	}
