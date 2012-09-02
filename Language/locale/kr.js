@@ -28,7 +28,7 @@ if(typeof VMM != 'undefined') {
 			return_to_title: "첫화면으로",
 			expand_timeline: "타임라인 확대",
 			contract_timeline: "타임라인 축소",
-			wikipedia: "From Wikipedia, the free encyclopedia",
+			wikipedia: "출처: 위키피디아, 우리 모두의 백과사전",
 			loading_content: "내용을 불러오고 있습니다.",
 			loading: "내용을 불러오는중"
 			
