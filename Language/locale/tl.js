@@ -28,7 +28,7 @@ if(typeof VMM != 'undefined') {
 			return_to_title: "Return to Title",
 			expand_timeline: "Expand Timeline",
 			contract_timeline: "Contract Timeline",
-			wikipedia: "From Wikipedia, the free encyclopedia",
+			wikipedia: "Mula sa Wikipedia, ang malayang ensiklopedya",
 			loading_content: "Loading Content",
 			loading: "Loading"
 		}
