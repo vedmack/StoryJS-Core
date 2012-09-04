@@ -13,15 +13,15 @@ if(typeof VMM != 'undefined') {
 			day_abbr: ["Կի.","Եկ.", "Եք.", "Չո.", "Հի.", "Ու.", "Շա."]
 		},
 		dateformats: {
-			year: "տտտտ",
-			month_short: "աաա",
-			month: "աաաա տտտտ",
-			full_short: "աաա օ",
-			full: "աաաա օ',' տտտտ",
-			time_no_seconds_short: "ժ:ՐՐ TT",
-			time_no_seconds_small_date: "Ժ:ԱԱ TT'<br/><small>'աաաա օ',' տտտտ'</small>'",
-			full_long: "աաա օ',' տտտտ 'ժամը' ժ:ՐՐ TT",
-			full_long_small_date: "ժ:ԱԱ TT'<br/><small>աաա օ',' տտտտ'</small>'"
+			year: "yyyy",
+			month_short: "mmm",
+			month: "mmmm yyyy",
+			full_short: "d mmm",
+			full: "d mmmm',' yyyy",
+			time_no_seconds_short: "H:MM",
+			time_no_seconds_small_date: "H:MM'<br/><small>'d mmmm',' yyyy'</small>'",
+			full_long: "d mmm',' yyyy 'at' H:MM",
+			full_long_small_date: "H:MM '<br/><small>d mmm',' yyyy'</small>'"
 		},
 		messages: {
 			loading_timeline: "Ժամանակագրությունը բեռնվում է... ",
