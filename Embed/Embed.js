@@ -54,7 +54,7 @@ function createStoryJS(c, src) {
 	================================================== */
 	var storyjs_embedjs, t, te, x,
 		isCDN					= false,
-		js_version				= "2.12",
+		js_version				= "2.14",
 		jquery_version_required	= "1.7.1",
 		jquery_version			= "",
 		ready = {
