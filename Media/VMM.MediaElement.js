@@ -84,7 +84,7 @@ if(typeof VMM != 'undefined' && typeof VMM.MediaElement == 'undefined') {
 					}
 					return mediaElem;
 				} else if (m.type	==	"website") {
-					mediaElem		=	"<div class='thumbnail thumb-website'></div>";
+					mediaElem		=	"<div class='thumbnail thumb-website' id='" + uid + "_thumb'></div>";
 					return mediaElem;
 				} else {
 					mediaElem = "<div class='thumbnail thumb-plaintext'></div>";
@@ -126,7 +126,7 @@ if(typeof VMM != 'undefined' && typeof VMM.MediaElement == 'undefined') {
 					VMM.ExternalAPI.flickr.get(m);
 			// INSTAGRAM
 				} else if (m.type		==	"instagram") {
-					mediaElem			=	"<div class='media-image media-shadow'><a href='" + m.link + "' target='_blank'><img src='" + VMM.ExternalAPI.instagram.get(m.id) + "'></a></div>";
+					mediaElem			=	"<div class='media-image media-shadow'><a href='" + m.link + "' target='_blank'><img src='" + VMM.ExternalAPI.instagram.get(m) + "'></a></div>";
 					//VMM.ExternalAPI.instagram.get(m.id, uid);
 			// GOOGLE DOCS
 				} else if (m.type		==	"googledoc") {
@@ -138,7 +138,7 @@ if(typeof VMM != 'undefined' && typeof VMM.MediaElement == 'undefined') {
 					VMM.ExternalAPI.youtube.get(m);
 			// VIMEO
 				} else if (m.type		==	"vimeo") {
-					mediaElem			=	"<div class='media-shadow'><iframe class='media-frame video vimeo' autostart='false' frameborder='0' width='100%' height='100%' src='http://player.vimeo.com/video/" + m.id + "?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff'></iframe></div>";
+					mediaElem			=	"<div class='media-shadow media-frame video vimeo' id='" + m.uid + "'>" + loading_messege + "</div>";
 					VMM.ExternalAPI.vimeo.get(m);
 			// DAILYMOTION
 				} else if (m.type		==	"dailymotion") {
@@ -186,10 +186,10 @@ if(typeof VMM != 'undefined' && typeof VMM.MediaElement == 'undefined') {
 					mediaElem			=	"<div class='plain-text'><div class='container'>" + VMM.Util.properQuotes(m.id) + "</div></div>";
 			// WEBSITE
 				} else if (m.type		==	"website") { 
-					//mediaElem			=	"<div class='media-shadow'><iframe class='media-frame website' frameborder='0' autostart='false' width='100%' height='100%' scrolling='yes' marginheight='0' marginwidth='0' src='" + m.id + "'></iframe></div>";
-					//mediaElem			=	"<a href='" + m.id + "' target='_blank'>" + "<img src='http://api.snapito.com/free/lc?url=" + m.id + "'></a>";
 					
-					mediaElem			=	"<div class='media-shadow website'><a href='" + m.id + "' target='_blank'>" + "<img src='http://api1.thumbalizr.com/?url=" + m.id.replace(/[\./]$/g, "") + "&width=300' class='media-image'></a></div>";
+					mediaElem			=	"<div class='media-shadow website' id='" + m.uid + "'>" + loading_messege + "</div>";
+					VMM.ExternalAPI.webthumb.get(m);
+					//mediaElem			=	"<div class='media-shadow website'><a href='" + m.id + "' target='_blank'>" + "<img src='http://api1.thumbalizr.com/?url=" + m.id.replace(/[\./]$/g, "") + "&width=300' class='media-image'></a></div>";
 					
 			// NO MATCH
 				} else {
