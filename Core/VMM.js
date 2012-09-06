@@ -157,6 +157,13 @@ if (typeof VMM == 'undefined') {
 			que:			[]
 		},
 		
+		webthumb: {
+			active:			false,
+			array:			[],
+			api_loaded:		false,
+			que:			[]
+		},
+		
 		googlemaps: {
 			active:			false,
 			map_active:		false,
