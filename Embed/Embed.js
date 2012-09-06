@@ -312,24 +312,25 @@ function createStoryJS(c, src) {
 		t.setAttribute("id", storyjs_e_config.id);
 		
 		if (storyjs_e_config.width.toString().match("%") ) {
-			te.style.width = storyjs_e_config.width;
-			embed_classname	+= " full-embed";
+			te.style.width = storyjs_e_config.width.split("%")[0] + "%";
 		} else {
-			embed_classname	+= " sized-embed";
 			storyjs_e_config.width = storyjs_e_config.width - 2;
 			te.style.width = (storyjs_e_config.width) + 'px';
 		}
 		
-		te.setAttribute("class", embed_classname);
-		te.setAttribute("className", embed_classname); 
-		
 		if (storyjs_e_config.height.toString().match("%") ) {
 			te.style.height = storyjs_e_config.height;
+			embed_classname	+= " full-embed";
+			te.style.height = storyjs_e_config.height.split("%")[0] + "%";
+			
 		} else {
+			embed_classname	+= " sized-embed";
 			storyjs_e_config.height = storyjs_e_config.height - 16;
 			te.style.height = (storyjs_e_config.height) + 'px';
 		}
 		
+		te.setAttribute("class", embed_classname);
+		te.setAttribute("className", embed_classname); 
 		t.style.position = 'relative';
 	}
 	
