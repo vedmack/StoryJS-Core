@@ -505,6 +505,9 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 			VMM.Lib.width(	layout_media + 		".plain-text-quote", 					mediasize.media.width);
 			VMM.Lib.width(	layout_media + 		".plain-text", 							mediasize.media.width);
 			
+			VMM.Lib.css(	layout_both, 		"max-width", 							mediasize.media.width);
+			
+			
 			// CAPTION WIDTH
 			VMM.Lib.css( layout_text_media + 	".caption",	"max-width",	mediasize.text_media.video.width);
 			VMM.Lib.css( layout_media + 		".caption",	"max-width",	mediasize.media.video.width);
