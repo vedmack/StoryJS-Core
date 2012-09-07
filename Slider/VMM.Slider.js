@@ -15,6 +15,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 			$slider_mask,
 			$slider_container,
 			$slides_items,
+			$dragslide,
 			events				= {},
 			data				= [],
 			slides				= [],
@@ -218,11 +219,43 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 			
 		}
 		
+		function onDragFinish(e, d) {
+			trace("DRAG FINISH");
+			trace(d.left_adjust);
+			trace((config.slider.width / 2));
+			
+			if (d.left_adjust < 0 ) {
+				if (Math.abs(d.left_adjust) > (config.slider.width / 2) ) {
+					//onNextClick(e);
+					if (current_slide == slides.length - 1) {
+						backToCurrentSlide();
+					} else {
+						goToSlide(current_slide+1, "easeOutExpo");
+						upDate();
+					}
+				} else {
+					backToCurrentSlide();
+					
+				}
+			} else if (Math.abs(d.left_adjust) > (config.slider.width / 2) ) {
+				if (current_slide == 0) {
+					backToCurrentSlide();
+				} else {
+					goToSlide(current_slide-1, "easeOutExpo");
+					upDate();
+				}
+			} else {
+				backToCurrentSlide();
+			}
+				
+			
+			
+		}
 		/* NAVIGATION
 		================================================== */
 		function onNextClick(e) {
 			if (current_slide == slides.length - 1) {
-				VMM.Lib.animate($slider_container, config.duration, config.ease, {"left": -(slides[current_slide].leftpos()) } );
+				backToCurrentSlide();
 			} else {
 				goToSlide(current_slide+1);
 				upDate();
@@ -231,7 +264,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 		
 		function onPrevClick(e) {
 			if (current_slide == 0) {
-				goToSlide(current_slide);
+				backToCurrentSlide();
 			} else {
 				goToSlide(current_slide-1);
 				upDate();
@@ -560,7 +593,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 		/* GO TO SLIDE
 			goToSlide(n, ease, duration);
 		================================================== */
-		var goToSlide = function(n, ease, duration, fast, firstrun) {
+		function goToSlide(n, ease, duration, fast, firstrun) {
 			var _ease		= config.ease,
 				_duration	= config.duration,
 				is_last		= false,
@@ -662,6 +695,10 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 			preloadSlides();
 		}
 
+		function backToCurrentSlide() {
+			VMM.Lib.stop($slider_container);
+			VMM.Lib.animate($slider_container, config.duration, "easeOutExpo", {"left": -(slides[current_slide].leftpos()) +  config.slider.content.padding} );
+		}
 		/* BUILD NAVIGATION
 		================================================== */
 		var buildNavigation = function() {
@@ -704,19 +741,17 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 			// ATTACH SLIDES
 			buildSlides(data);
 			
-			/* MAKE SLIDER TOUCHABLE
+			/* MAKE SLIDER DRAGGABLE/TOUCHABLE
 			================================================== */
+			
 			if (VMM.Browser.device == "tablet" || VMM.Browser.device == "mobile") {
 				config.duration = 500;
 				__duration = 1000;
-				//VMM.TouchSlider.createPanel($slider_container, $slider_container, VMM.Lib.width(slides[0]), config.spacing, true);
-				//VMM.TouchSlider.createPanel($slider_container, $slider_container, slides[0].width(), config.spacing, true);
-				//VMM.bindEvent($slider_container, onTouchUpdate, "TOUCHUPDATE");
-			} else if (VMM.Browser.device == "mobile") {
-				
-			} else {
-				//VMM.DragSlider.createPanel($slider_container, $slider_container, VMM.Lib.width(slides[0]), config.spacing, true);
-			}
+				$dragslide = new VMM.DragSlider();
+				$dragslide.createPanel($slider_mask, $slider_container, "", config.touch, true);
+				VMM.bindEvent($dragslide, onDragFinish, 'DRAGUPDATE');
+				//"<div class='vco-loading'><div class='vco-loading-container'><div class='vco-loading-icon'></div>" + "<div class='vco-message'><p>" + "Slide" + "</p></div></div></div>"
+			} 
 			
 			reSize(false, true);
 			VMM.Lib.visible(navigation.prevBtn, false);

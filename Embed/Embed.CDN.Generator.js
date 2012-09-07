@@ -1,7 +1,6 @@
 /*
-	VéritéCo Embed Generator 2.1
+	VéritéCo Embed Generator 2.2
 	Designed and built by Zach Wise digitalartwork.net
-	Date: June 21, 2012
 */  
 if(typeof generator_embed_path == 'undefined' || typeof generator_embed_path == 'undefined') {
 	// REPLACE WITH YOUR BASEPATH IF YOU WANT OTHERWISE IT WILL TRY AND FIGURE IT OUT

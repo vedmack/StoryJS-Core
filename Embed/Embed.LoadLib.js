@@ -1,6 +1,7 @@
 /*
 	LoadLib
 	Designed and built by Zach Wise digitalartwork.net
+	Extends LazyLoad
 */
 
 /*	* CodeKit Import

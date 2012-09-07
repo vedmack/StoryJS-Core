@@ -1,12 +1,12 @@
-/*
-	VéritéCo StoryJS Embed Loader 2.1
+/**
+	VéritéCo StoryJS Embed Loader 2.2
 	Designed and built by Zach Wise digitalartwork.net
-	Date: June 21, 2012
 */  
 
 /* 	CodeKit Import
 	http://incident57.com/codekit/ 
 ================================================== */
+// @codekit-prepend "../VMM.StoryJS.License.js";
 // @codekit-prepend "Embed.LoadLib.js";
 
 var WebFontConfig;
