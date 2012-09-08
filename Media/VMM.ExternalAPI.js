@@ -469,6 +469,7 @@ if(typeof VMM != 'undefined' && typeof VMM.ExternalAPI == 'undefined') {
 				
 				map_options = {
 					zoom:						zoom,
+					draggable: 					false, 
 					disableDefaultUI:			true,
 					mapTypeControl:				false,
 					zoomControl:				true,
