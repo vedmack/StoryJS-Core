@@ -183,8 +183,8 @@ if (typeof VMM.Slider != 'undefined') {
 			if (data.startdate != null && data.startdate != "") {
 				if (type.of(data.startdate) == "date") {
 					if (data.type != "start") {
-						var st	= VMM.Date.prettyDate(data.startdate);
-						var en	= VMM.Date.prettyDate(data.enddate);
+						var st	= VMM.Date.prettyDate(data.startdate, false, data.precisiondate);
+						var en	= VMM.Date.prettyDate(data.enddate, false, data.precisiondate);
 						var tag	= "";
 						/* TAG / CATEGORY
 						================================================== */

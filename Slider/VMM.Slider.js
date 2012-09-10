@@ -569,7 +569,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 		
 		/* POSITION SLIDES
 		================================================== */
-		var positionSlides = function() {
+		function positionSlides() {
 			var pos = 0,
 				i	= 0;
 				
@@ -581,7 +581,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 		
 		/* OPACITY SLIDES
 		================================================== */
-		var opacitySlides = function(n) {
+		function opacitySlides(n) {
 			var _ease	= "linear",
 				i		= 0;
 				
@@ -640,7 +640,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 							VMM.attachElement(navigation.prevDate, _title);
 							VMM.attachElement(navigation.prevTitle, "");
 						} else {
-							VMM.attachElement(navigation.prevDate, VMM.Date.prettyDate(data[current_slide - 1].startdate));
+							VMM.attachElement(navigation.prevDate, VMM.Date.prettyDate(data[current_slide - 1].startdate, false, data[current_slide - 1].precisiondate));
 							VMM.attachElement(navigation.prevTitle, _title);
 						}
 					} else {
@@ -658,7 +658,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 							VMM.attachElement(navigation.nextDate, _title);
 							VMM.attachElement(navigation.nextTitle, "");
 						} else {
-							VMM.attachElement(navigation.nextDate, VMM.Date.prettyDate(data[current_slide + 1].startdate) );
+							VMM.attachElement(navigation.nextDate, VMM.Date.prettyDate(data[current_slide + 1].startdate, false, data[current_slide + 1].precisiondate) );
 							VMM.attachElement(navigation.nextTitle, _title);
 						}
 					} else {
