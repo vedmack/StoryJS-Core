@@ -28,7 +28,7 @@ if(typeof VMM != 'undefined') {
 			return_to_title: "回到開頭",
 			expand_timeline: "展開時間",
 			contract_timeline: "縮短時間",
-			wikipedia: "擷取至維基百科, 自由之百科全書",
+			wikipedia: "擷取自維基百科, 自由之百科全書",
 			loading_content: "載入內容",
 			loading: "載入中"
 			
