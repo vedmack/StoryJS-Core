@@ -6,21 +6,6 @@ if(typeof VMM != 'undefined') {
 		api: {
 			wikipedia: "sv"
 		},
-		
-		jan.
-		febr.
-		mars
-		april
-		maj
-		juni
-		juli
-		aug.
-		sept.
-		okt.
-		nov.
-		dec.
-		
-		
 		date: {
 			month: ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"],
 			month_abbr: ["jan", "febr", "mars", "april", "maj", "juni", "juli", "aug", "sept", "okt", "nov", "dec"],
