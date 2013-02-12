@@ -96,7 +96,7 @@ function createStoryJS(c, src) {
 			lang:		'en',
 			font:		'default',
 			css:		path.css + 'timeline.css?'+js_version,
-			js:			path.js + 'timeline-min.js?'+js_version,
+			js:			'',
 			api_keys: {
 				google:				"",
 				flickr:				"",
@@ -165,7 +165,15 @@ function createStoryJS(c, src) {
 		
 	} else {
 		storyjs_e_config.css	= path.css + storyjs_e_config.type + ".css?" + js_version;
-		storyjs_e_config.js		= path.js  + storyjs_e_config.type + "-min.js?"  + js_version;
+		
+		// Use unminified js file if in debug mode
+		storyjs_e_config.js		= path.js  + storyjs_e_config.type;
+		if (storyjs_e_config.debug) {
+			storyjs_e_config.js	+= ".js?"  + js_version;
+		} else {
+			storyjs_e_config.js	+= "-min.js?"  + js_version;
+		}
+		
 		storyjs_e_config.id		= "storyjs-" + storyjs_e_config.type;
 	}
 	
