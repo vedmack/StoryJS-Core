@@ -29,8 +29,8 @@ if(typeof VMM != 'undefined') {
 			expand_timeline: "Expandir Timeline",
 			contract_timeline: "Contrair Timeline",
 			wikipedia: "Wikipedia, A enciclopédia livre",
-			loading_content: "Loading Content",
-			loading: "Loading"
+			loading_content: "Carregando Conteúdo",
+			loading: "Carregando"
 			
 		}
 	}
