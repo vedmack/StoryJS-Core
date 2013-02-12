@@ -2,7 +2,7 @@
 ================================================== */
 if(typeof VMM != 'undefined') {
 	VMM.Language = {
-		lang: "zh-ch",
+		lang: "zh-cn",
 		api: {
 			wikipedia: "zh"
 		},
