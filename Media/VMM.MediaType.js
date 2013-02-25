@@ -28,8 +28,10 @@ if(typeof VMM != 'undefined' && typeof VMM.MediaType == 'undefined') {
 				media.id	= VMM.Util.getUrlVars(d)["v"];
 			} else if (d.match('\/embed\/')) {
 				media.id	= d.split("embed\/")[1].split(/[?&]/)[0];
-			} else {
+			} else if (d.match(/v\/|v=|youtu\.be\//)){
 				media.id	= d.split(/v\/|v=|youtu\.be\//)[1].split(/[?&]/)[0];
+			} else {
+				trace("YOUTUBE IN URL BUT NOT A VALID VIDEO");
 			}
 			media.start	= VMM.Util.getUrlVars(d)["t"];
 			media.hd	= VMM.Util.getUrlVars(d)["hd"];
