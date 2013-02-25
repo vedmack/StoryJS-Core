@@ -424,7 +424,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 				};
 				
 			// Handle smaller sizes
-			if (VMM.Browser.device == "mobile" || current_width <= 640) {
+			if (VMM.Browser.device == "mobile" || current_width < 641) {
 				is_skinny = true;
 
 			} 
