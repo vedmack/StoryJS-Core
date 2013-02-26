@@ -326,12 +326,16 @@ function createStoryJS(c, src) {
 			te.style.width = (storyjs_e_config.width) + 'px';
 		}
 		
-		if (storyjs_e_config.height.toString().match("%") ) {
+		if (storyjs_e_config.height.toString().match("%")) {
 			te.style.height = storyjs_e_config.height;
 			embed_classname	+= " full-embed";
 			te.style.height = storyjs_e_config.height.split("%")[0] + "%";
 			
-		} else {
+		} else if (storyjs_e_config.width.toString().match("%")) {
+			embed_classname	+= " full-embed";
+			storyjs_e_config.height = storyjs_e_config.height - 16;
+			te.style.height = (storyjs_e_config.height) + 'px';
+		}else {
 			embed_classname	+= " sized-embed";
 			storyjs_e_config.height = storyjs_e_config.height - 16;
 			te.style.height = (storyjs_e_config.height) + 'px';
