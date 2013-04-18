@@ -45,6 +45,16 @@ if(typeof VMM != 'undefined' && typeof VMM.MediaType == 'undefined') {
 			media.id = d.split(/video\/|\/\/dailymotion\.com\//)[1];
 			media.type = "dailymotion";
 			success = true;
+	    } else if (d.match('(www.)?vine\.co')) {
+			trace("VINE");
+			//https://vine.co/v/b55LOA1dgJU
+			if (d.match("vine.co/v/")) {
+				media.id = d.split("vine.co/v/")[1];
+				trace(media.id);
+			}
+			trace(d);
+			media.type = "vine";
+			success = true;
 		} else if (d.match('(player.)?soundcloud\.com')) {
 			media.type = "soundcloud";
 			media.id = d;

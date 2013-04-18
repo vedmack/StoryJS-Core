@@ -48,6 +48,9 @@ if(typeof VMM != 'undefined' && typeof VMM.ExternalAPI == 'undefined') {
 			if (VMM.master_config.vimeo.active) {
 				VMM.ExternalAPI.vimeo.pushQue();
 			}
+			if (VMM.master_config.vine.active) {
+				VMM.ExternalAPI.vine.pushQue();
+			}
 			if (VMM.master_config.twitter.active) {
 				VMM.ExternalAPI.twitter.pushQue();
 			}
@@ -1439,6 +1442,35 @@ if(typeof VMM != 'undefined' && typeof VMM.ExternalAPI == 'undefined') {
 				if (VMM.master_config.vimeo.que.length > 0) {
 					VMM.ExternalAPI.vimeo.create(VMM.master_config.vimeo.que[0], VMM.ExternalAPI.vimeo.pushQue);
 					VMM.master_config.vimeo.que.remove(0);
+				}
+			}
+			
+		},
+		
+		vine: {
+			
+			get: function(m) {
+				VMM.master_config.vine.que.push(m);
+				VMM.master_config.vine.active = true;
+			},
+			
+			create: function(m, callback) {
+				trace("VINE CREATE");				
+				
+				var video_url	= "https://vine.co/v/" + m.id + "/embed/simple";
+					
+				
+				
+				// VIDEO
+				// TODO: NEED TO ADD ASYNC SCRIPT TO TIMELINE FLOW
+				VMM.attachElement("#" + m.uid, "<iframe autostart='false' frameborder='0' width='100%' height='100%' src='" + video_url + "'></iframe><script async src='http://platform.vine.co/static/scripts/embed.js' charset='utf-8'></script>");
+				
+			},
+			
+			pushQue: function() {
+				if (VMM.master_config.vine.que.length > 0) {
+					VMM.ExternalAPI.vine.create(VMM.master_config.vine.que[0], VMM.ExternalAPI.vine.pushQue);
+					VMM.master_config.vine.que.remove(0);
 				}
 			}
 			

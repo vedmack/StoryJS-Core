@@ -143,6 +143,10 @@ if(typeof VMM != 'undefined' && typeof VMM.MediaElement == 'undefined') {
 			// DAILYMOTION
 				} else if (m.type		==	"dailymotion") {
 					mediaElem			=	"<div class='media-shadow'><iframe class='media-frame video dailymotion' autostart='false' frameborder='0' width='100%' height='100%' src='http://www.dailymotion.com/embed/video/" + m.id + "'></iframe></div>";
+			// VINE
+				} else if (m.type		==	"vine") {
+					mediaElem			=	"<div class='media-shadow media-frame video vine' id='" + m.uid + "'>" + loading_messege + "</div>";
+					VMM.ExternalAPI.vine.get(m);
 			// TWITTER
 				} else if (m.type		==	"twitter"){
 					mediaElem			=	"<div class='twitter' id='" + m.uid + "'>" + loading_messege + "</div>";

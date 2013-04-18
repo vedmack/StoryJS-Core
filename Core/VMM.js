@@ -157,6 +157,13 @@ if (typeof VMM == 'undefined') {
 			que:			[]
 		},
 		
+		vine: {
+			active:			false,
+			array:			[],
+			api_loaded:		false,
+			que:			[]
+		},
+		
 		webthumb: {
 			active:			false,
 			array:			[],
