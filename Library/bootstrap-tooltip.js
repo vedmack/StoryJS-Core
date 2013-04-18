@@ -154,7 +154,7 @@
 
   , setContent: function () {
       var $tip = this.tip()
-      $tip.find('.tooltip-inner').html(this.getTitle())
+      $tip.find('.timeline-tooltip-inner').html(this.getTitle())
       $tip.removeClass('fade in top bottom left right')
     }
 
@@ -264,7 +264,7 @@
   , placement: 'top'
   , trigger: 'hover'
   , title: ''
-  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , template: '<div class="timeline-tooltip"><div class="timeline-tooltip-arrow"></div><div class="timeline-tooltip-inner"></div></div>'
   }
 
 }( window.jQuery );
