@@ -49,6 +49,9 @@ if(typeof VMM != 'undefined' && typeof VMM.MediaElement == 'undefined') {
 				} else if (m.type	==	"vimeo") {
 					mediaElem		=	"<div class='thumbnail thumb-vimeo' id='" + uid + "_thumb'></div>";
 					return mediaElem;
+				} else if (m.type  ==  "vine") {
+					mediaElem		=  "<div class='thumbnail thumb-vine'></div>";
+					return mediaElem;
 				} else if (m.type  ==  "dailymotion") {
 					mediaElem		=  "<div class='thumbnail thumb-video'></div>";
 					return mediaElem;
