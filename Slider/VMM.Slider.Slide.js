@@ -22,6 +22,8 @@ if (typeof VMM.Slider != 'undefined') {
 		_id				= _id + data.uniqueid;
 		this.enqueue	= _enqueue;
 		this.id			= _id;
+		trace("SLIDE");
+		trace(d);
 		
 		
 		element		=	VMM.appendAndGetElement(_parent, "<div>", "slider-item");
@@ -38,6 +40,14 @@ if (typeof VMM.Slider != 'undefined') {
 		
 		/* PUBLIC
 		================================================== */
+		this.slide_number = function() {
+			if (data.slide_number != null && data.slide_number != "") {
+				return data.slide_number;
+			} else {
+				return false;
+			}
+		}
+		
 		this.show = function(skinny) {
 			_enqueue = false;
 			timer.skinny = skinny;

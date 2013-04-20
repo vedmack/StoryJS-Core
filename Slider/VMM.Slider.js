@@ -50,6 +50,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 			config	= {
 				preload:			4,
 				current_slide:		0,
+				reverse: 			false,
 				interval:			10, 
 				something:			0, 
 				width:				720, 
@@ -117,7 +118,19 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 		================================================== */
 		this.setData = function(d) {
 			if(typeof d != 'undefined') {
-				data = d;
+				var i	= 0;
+				
+				data = d.slice(0);
+				
+				// REVERSE MODE
+				if (config.reverse) {
+					// SET PROPER ARRAY NUMBER
+					for(i = 0; i < data.length; i++) {
+						data[i].slide_number = i;
+					}
+					data.reverse();
+				}
+				
 				build();
 			} else{
 				trace("NO DATA");
@@ -158,7 +171,8 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 		};
 		
 		this.setSlide = function(n) {
-			goToSlide(n);
+			goToSlide(n, config.ease, config.duration, false, false, true);
+			//goToSlide(n);
 		};
 		
 		/* ON EVENT
@@ -252,24 +266,48 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 			
 			
 		}
+		
 		/* NAVIGATION
 		================================================== */
-		function onNextClick(e) {
-			if (current_slide == slides.length - 1) {
+		function onNextClick(e, r) {
+			var cs = 0;
+			
+			if (config.reverse) {
+				cs = slides[current_slide].slide_number();
+			} else {
+				cs = current_slide;
+			}
+			trace(current_slide);
+			trace(cs);
+			if (cs == slides.length - 1) {
 				backToCurrentSlide();
 			} else {
-				goToSlide(current_slide+1);
+				//goToSlide(cs+1);
+				
+				if (config.reverse) {
+					goToSlide(cs-1, config.ease, config.duration, false, false, true);
+				} else {
+					goToSlide(cs+1);
+				}
+				
 				upDate();
 			}
+			
 		}
 		
-		function onPrevClick(e) {
-			if (current_slide == 0) {
-				backToCurrentSlide();
+		function onPrevClick(e, r) {
+			if (config.reverse) {
+				
 			} else {
-				goToSlide(current_slide-1);
-				upDate();
+				if (current_slide == 0) {
+					backToCurrentSlide();
+				} else {
+					//goToSlide(current_slide-1, config.ease, config.duration, false, false, true);
+					goToSlide(current_slide-1);
+					upDate();
+				}
 			}
+			
 		}
 
 		function onKeypressNav(e) {
@@ -598,8 +636,9 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 		
 		/* GO TO SLIDE
 			goToSlide(n, ease, duration);
+		
 		================================================== */
-		function goToSlide(n, ease, duration, fast, firstrun) {
+		function goToSlide(n, ease, duration, fast, firstrun, bypass_reverse) {
 			var _ease		= config.ease,
 				_duration	= config.duration,
 				is_last		= false,
@@ -612,7 +651,21 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 			VMM.ExternalAPI.youtube.stopPlayers();
 			
 			// Set current slide
-			current_slide	= n;
+			if (config.reverse && bypass_reverse) {
+				// GET PROPER ARRAY NUMBER
+				for(i = 0; i < slides.length; i++) {
+					if (slides[i].slide_number() == n) {
+						trace("FOUND SLIDE FOR REVERSE MODE");
+						trace(n);
+						trace(i);
+						current_slide = i;
+					}
+				}
+			} else {
+				current_slide = n;
+			}
+			trace("CURRENT SLIDE " + current_slide);
+			// Set current slide
 			_pos			= slides[current_slide].leftpos();
 			
 			
@@ -699,7 +752,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 			}
 			
 			preloadSlides();
-			VMM.fireEvent($slider, "MESSAGE", "TEST");
+			//VMM.fireEvent($slider, "MESSAGE", "TEST");
 		}
 
 		function backToCurrentSlide() {
