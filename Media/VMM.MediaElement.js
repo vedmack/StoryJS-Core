@@ -21,7 +21,7 @@ if(typeof VMM != 'undefined' && typeof VMM.MediaElement == 'undefined') {
 			if (h != null && h != "") {_h = h};
 			if (uid != null && uid != "") {_uid = uid};
 			
-			if (data.media != null && data.media != "") {
+			if (data.media != null) {
 				var _valid		= true,
 					mediaElem	= "",
 					m			= VMM.MediaType(data.media); //returns an object with .type and .id
